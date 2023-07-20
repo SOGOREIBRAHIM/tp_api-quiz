@@ -34,7 +34,7 @@ public class User {
     private String username;
 
     @NotNull(message = "Remplissez les champs vides")
-    @Size(max = 10, message = "Mot de passe trop long")
+    @Size(max = 10, message = "Mot de passe trope long")
     private String password;
 
     @OneToOne
