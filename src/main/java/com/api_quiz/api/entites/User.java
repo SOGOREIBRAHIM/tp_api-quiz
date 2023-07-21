@@ -9,13 +9,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
+@Table(name = "USERS")
 public class User {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUser;
 
+    @Id
+    private String idUser;
+
+    @Column(name = "nom")
     @NotNull(message = "Remplissez les champs vides")
     @Size(max = 50, message = "Texte trop long")
     private String nom;
@@ -34,11 +38,11 @@ public class User {
     private String username;
 
     @NotNull(message = "Remplissez les champs vides")
-    @Size(max = 10, message = "Mot de passe trope long")
+    @Size(max = 10, message = "Mot de passe trop long")
     private String password;
 
-    @OneToOne
-    private Jeux jeuxUser;
+    @ManyToMany
+    private List<Jeux> jeuxUser;
 
     @OneToOne
     private Question questionsUser;

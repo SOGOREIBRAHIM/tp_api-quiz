@@ -8,13 +8,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor    // lombok
+@Table(name = "JEUX")
 public class Jeux {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)     // cle primaire et auto incrementaton
-    private Long idJeux;
+
+    @Id
+    private String idJeux;
 
     @NotNull(message = "Remplissez les champs vides")
     @Size(max = 100, message = "Texte trop long")
@@ -29,13 +32,13 @@ public class Jeux {
     @NotNull(message = "Remplissez les champs vides")
     private DomaineEnum domaine;
 
-    @OneToMany(mappedBy = "jeuxUser", fetch = FetchType.LAZY)
-    private Collection<User> usersJeux;
+    @ManyToMany(mappedBy = "jeuxUser", fetch = FetchType.EAGER)     // pour charger objet automatiquemnet
+    private List<User> usersJeux = new ArrayList<>();
 
     @OneToOne
     private Resultat resultatJeux;
 
     @OneToMany(mappedBy = "jeuxQuestion", fetch = FetchType.LAZY)
-    private Collection<Question> questionsJeux;
+    private List<Question> questionsJeux;
 
 }
