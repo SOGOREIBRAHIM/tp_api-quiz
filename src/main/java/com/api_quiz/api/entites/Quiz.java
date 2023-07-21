@@ -38,8 +38,12 @@ public class Quiz {
     @ManyToMany    // pour charger objet automatiquemnet
     private List<User> quizUsers = new ArrayList<>();   //pour associer un jeux a un user
 
+    @ManyToOne
+    private User creerUser;
+
     @OneToMany(mappedBy = "quizResultat",fetch = FetchType.LAZY)
     private List<Resultat> resultatQuiz;
+
 
     @OneToMany(mappedBy = "quizQuestion", fetch = FetchType.LAZY)
     private List<Question> questionsQuiz;

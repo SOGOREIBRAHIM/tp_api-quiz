@@ -44,6 +44,9 @@ public class User {
     @ManyToMany(mappedBy = "quizUsers")
     private List<Quiz> usersQuiz ;
 
+    @OneToMany(mappedBy = "creerUser",fetch = FetchType.LAZY)
+    private List<Quiz> creerQuiz;
+
     @OneToMany(mappedBy = "userQuestion", fetch = FetchType.LAZY)
     private List<Question> questionsUser;
 

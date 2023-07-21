@@ -13,8 +13,8 @@ import java.util.List;
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
 public class Question {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idQuestion;
+    @Id
+    private String idQuestion;
 
     @NotNull(message = "Remplissez les champs vides")
     @Size(max = 100, message = "Texte trop long")
@@ -24,6 +24,7 @@ public class Question {
     @Size(max = 100, message = "Texte trop long")
     private String text;
 
+    @Enumerated(EnumType.STRING)
     @NotNull(message = "Remplissez les champs vides")
     private NiveauEnum niveau;
 
