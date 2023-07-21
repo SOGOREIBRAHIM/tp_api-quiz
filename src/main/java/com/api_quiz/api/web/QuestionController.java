@@ -20,7 +20,7 @@ public class QuestionController {
         return questionRepository.save(question);
     }
 
-    @GetMapping("/liste")
+    @GetMapping("/question")
     private List<Question> afficher(){
         return questionRepository.findAll();
     }
