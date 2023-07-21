@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,8 +16,8 @@ import java.util.List;
 @Table(name = "USERS")
 public class User {
 
-    @Id
-    private String idUser;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idUser;
 
     @Column(name = "nom")
     @NotNull(message = "Remplissez les champs vides")
@@ -41,17 +41,17 @@ public class User {
     @Size(max = 10, message = "Mot de passe trop long")
     private String password;
 
-    @ManyToMany
-    private List<Jeux> jeuxUser;
+    @ManyToMany(mappedBy = "quizUsers")
+    private List<Quiz> usersQuiz ;
 
-    @OneToOne
-    private Question questionsUser;
+    @OneToMany(mappedBy = "userQuestion", fetch = FetchType.LAZY)
+    private List<Question> questionsUser;
 
-    @OneToOne
-    private Reponse reponse;
+    @OneToMany(mappedBy = "usersReponse", fetch = FetchType.LAZY)
+    private List<Reponse> reponseUser;
 
-    @OneToOne
-    private Resultat resultat;
+    @OneToMany(mappedBy = "usersResultat", fetch = FetchType.LAZY)
+    private List<Resultat> resultatUser;
 
 
 }

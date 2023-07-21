@@ -24,14 +24,14 @@ public class Resultat {
     @Max(value = 50, message = "Vous ne pouvez pas depasser 50 joueurs")
     private int rang;
 
-    @OneToMany(mappedBy = "resultat", fetch = FetchType.LAZY)
-    private Collection<User> usersResultat;
-
     @OneToOne
-    private Jeux jeuxResultat;
+    private User usersResultat;
 
-    @OneToMany(mappedBy = "resultatReponse", fetch = FetchType.LAZY)
-    private Collection<Reponse> reponsesResultat;
+    @ManyToOne
+    private Quiz quizResultat;
+
+    @ManyToOne
+    private Reponse reponsesResultat;
 
 
 

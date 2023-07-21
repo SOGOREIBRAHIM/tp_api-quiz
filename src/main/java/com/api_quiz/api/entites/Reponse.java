@@ -29,13 +29,13 @@ public class Reponse {
     @Temporal(TemporalType.TIME)    // retourner l'heure
     private Date tempsReponse;
 
-    @OneToMany(mappedBy = "reponse", fetch = FetchType.LAZY)
-    private Collection<User> usersReponse;
+    @ManyToOne
+    private User usersReponse;
 
     @OneToOne
     private Resultat resultatReponse;
 
-    @OneToOne
+    @ManyToOne
     private Question questionReponse;
 
 

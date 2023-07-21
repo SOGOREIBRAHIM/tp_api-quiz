@@ -7,8 +7,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
+
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
 public class Question {
@@ -29,13 +30,13 @@ public class Question {
     @Temporal(TemporalType.TIME)
     private Date tempsQuestion;
 
-    @OneToMany(mappedBy = "questionsUser", fetch = FetchType.LAZY)
-    private Collection<User> usersQuestion;
+    @ManyToOne
+    private User userQuestion;
 
-    @OneToOne
-    private Reponse reponseReponse;
+    @OneToMany(mappedBy = "questionReponse", fetch = FetchType.LAZY)
+    private List<Reponse> reponseReponse;
 
-    @OneToOne
-    private Jeux jeuxQuestion;
+    @ManyToOne
+    private Quiz quizQuestion;
 }
 
