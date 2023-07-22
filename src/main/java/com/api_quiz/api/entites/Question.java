@@ -24,6 +24,7 @@ public class Question {
     @Size(max = 100, message = "Texte trop long")
     private String text;
 
+    @Enumerated(EnumType.STRING)
     @NotNull(message = "Remplissez les champs vides")
     private NiveauEnum niveau;
 
