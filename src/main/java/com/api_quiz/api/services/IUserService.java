@@ -13,7 +13,9 @@ public interface IUserService {
 
     User connecter(String username, String password);   // connexion de User
 
-    void supprimerQuiz(String usermane);    // supprimer User par username qui est unique
+    User modifierQuiz(User user);    // modifier un User
+
+    void supprimer(String username);      // supprimer User par username qui est unique
 
 
 

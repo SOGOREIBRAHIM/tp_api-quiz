@@ -44,8 +44,16 @@ public class UserServiceImpl implements IUserService{
 
 //    methode supprimer user
     @Override
-    public void supprimerQuiz(String usermane) {
+    public User modifierQuiz(User user) {
+       return userRepository.save(user);
+    }
 
+    /**
+     * @param username
+     */
+    @Override
+    public void supprimer(String username) {
+        userRepository.deleteById(username);
     }
 
 
