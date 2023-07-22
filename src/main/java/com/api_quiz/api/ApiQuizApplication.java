@@ -20,31 +20,31 @@ public class ApiQuizApplication {
 		SpringApplication.run(ApiQuizApplication.class, args);
 	}
 //	@Bean
-//	CommandLineRunner start(IUserService userService){
-//		return args -> {
-//			try {
-//				User user = new User();
-//				user.setIdUser(null);
-//				user.setNom("Sogore");
-//				user.setPrenom("Ibrahim");
-//				user.setEmail("sogore@gmail.com");
-//				user.setUsername("user");
-//				user.setPassword("12345678");
-//				userService.inscrire(user);
-//			}catch (Exception e){
-//				e.printStackTrace();
-//			}
-//
-//			try {
-//				User user1 = userService.connecter("user","12345678");
-//				System.out.println(user1.getIdUser());
-//				System.out.println(user1.getUsername());
-//			}catch (Exception e){
-//				e.printStackTrace();
-//			}
-//
-//		};
-//
-//	}
+	CommandLineRunner start(IUserService userService){
+		return args -> {
+			try {
+				User user = new User();
+				user.setIdUser(null);
+				user.setNom("Sogore");
+				user.setPrenom("Ibrahim");
+				user.setEmail("sogore@gmail.com");
+				user.setUsername("user");
+				user.setPassword("12345678");
+				userService.inscrire(user);
+			}catch (Exception e){
+				e.printStackTrace();
+			}
+
+			try {
+				User user1 = userService.connecter("user","12345678");
+				System.out.println(user1.getIdUser());
+				System.out.println(user1.getUsername());
+			}catch (Exception e){
+				e.printStackTrace();
+			}
+
+		};
+
+	}
 
 }
