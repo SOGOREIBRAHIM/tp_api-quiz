@@ -16,7 +16,7 @@ import java.util.List;
 public class Quiz {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String idQuiz;
+    private int idQuiz;
 
     @Column(name = "nom")
     @NotNull(message = "Remplissez les champs vides")
