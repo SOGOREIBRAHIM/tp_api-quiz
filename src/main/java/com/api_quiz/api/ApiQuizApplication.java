@@ -1,8 +1,6 @@
 package com.api_quiz.api;
 
-import com.api_quiz.api.entites.NiveauEnum;
-import com.api_quiz.api.entites.Question;
-import com.api_quiz.api.entites.User;
+import com.api_quiz.api.entites.*;
 import com.api_quiz.api.repository.IUserRepository;
 import com.api_quiz.api.services.IUserService;
 import org.springframework.boot.CommandLineRunner;
@@ -27,13 +25,24 @@ public class ApiQuizApplication {
 				user.setIdUser(null);
 				user.setNom("Sogore");
 				user.setPrenom("Ibrahim");
-				user.setEmail("sogore@gmail.com");
+				user.setEmail("sogorei@gmail.com");
 				user.setUsername("user");
 				user.setPassword("12345678");
 				userService.inscrire(user);
+
+
+
 			}catch (Exception e){
 				e.printStackTrace();
 			}
+			Quiz quiz = new Quiz();
+			quiz.setIdQuiz(null);
+			quiz.setNom("Questionbbbb anglais");
+			quiz.setType(TypeEnum.NOUVEAU);
+			quiz.setDureeTotal(new Date());
+			quiz.setDomaine(DomaineEnum.JAVA);
+			quiz.setCreerUser(new User("7b6fdee4-feb5-4bf5-966f-f08475fdbe60","Sogore","Ibrahim","sogorei@gmail.com","user","12345678",null,null,null,null,null));
+			userService.creerQuiz(quiz);
 
 			try {
 				User user1 = userService.connecter("user","12345678");

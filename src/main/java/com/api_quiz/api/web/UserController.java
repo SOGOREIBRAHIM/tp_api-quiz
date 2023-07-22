@@ -1,5 +1,6 @@
 package com.api_quiz.api.web;
 
+import com.api_quiz.api.entites.Quiz;
 import com.api_quiz.api.entites.User;
 import com.api_quiz.api.repository.IUserRepository;
 import com.api_quiz.api.services.IUserService;
@@ -19,7 +20,7 @@ public class UserController {
     private IUserService userService;
 
 //    methode inscription de user
-    @PostMapping("/ajouter")
+    @PostMapping("/ajouterUser")
     private User inscrire(@RequestBody User user){
        return userService.inscrire(user);
     }
@@ -28,6 +29,12 @@ public class UserController {
     @PostMapping("/connecter")
     private User connecter(@RequestParam("user") String username, @RequestParam("pass") String password){
         return userService.connecter(username,password);
+    }
+
+//    methode creation de Quiz
+    @PostMapping("/ajouterQuiz")
+    private Quiz ajouter(@RequestBody Quiz quiz){
+        return userService.creerQuiz(quiz);
     }
 
 }

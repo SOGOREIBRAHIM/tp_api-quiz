@@ -1,5 +1,6 @@
 package com.api_quiz.api.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -43,6 +44,7 @@ public class Quiz {
     private List<User> quizUsers = new ArrayList<>();   //pour associer un jeux a un user
 
     @ManyToOne
+    @JsonIgnore
     private User creerUser;
 
     @OneToMany(mappedBy = "quizResultat",fetch = FetchType.LAZY)
