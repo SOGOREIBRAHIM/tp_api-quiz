@@ -5,6 +5,7 @@ import com.api_quiz.api.entites.User;
 import com.api_quiz.api.repository.*;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -24,7 +25,7 @@ public class UserServiceImpl implements IUserService{
 
     @Override
     public User inscrire(User user) {
-        user.setIdUser(UUID.randomUUID().toString());
+        user.setIdUser(UUID.randomUUID().toString());       // permet de generer String en fonction de heure system
         if (user==null) throw new RuntimeException("Remplissez les champs vides");
             return userRepository.save(user);
          }
@@ -37,7 +38,7 @@ public class UserServiceImpl implements IUserService{
     @Override
     public User connecter(String username, String password) {
         User user = userRepository.findByUsername(username);
-        if (user != null) throw new RuntimeException("Remplissez les champs vides");
+        if (user == null) throw new RuntimeException("Remplissez les champs vides");
         if (user.getPassword().equals(password)) {
             return user;
         }

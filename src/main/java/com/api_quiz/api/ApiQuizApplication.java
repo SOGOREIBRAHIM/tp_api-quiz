@@ -35,7 +35,16 @@ public class ApiQuizApplication {
 //				e.printStackTrace();
 //			}
 //
+//			try {
+//				User user1 = userService.connecter("user","12345678");
+//				System.out.println(user1.getIdUser());
+//				System.out.println(user1.getUsername());
+//			}catch (Exception e){
+//				e.printStackTrace();
+//			}
+//
 //		};
+//
 //	}
 
 }

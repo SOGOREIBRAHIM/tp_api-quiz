@@ -5,21 +5,29 @@ import com.api_quiz.api.repository.IUserRepository;
 import com.api_quiz.api.services.IUserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
 public class UserController {
+
 //    Injection des interfaces
     private IUserRepository userRepository;
     private IUserService userService;
-//    methode inscription
-    @PostMapping("/inscrire")
-    private User connecter(@RequestBody User user){
+
+//    methode inscription de user
+    @PostMapping("/ajouter")
+    private User inscrire(@RequestBody User user){
        return userService.inscrire(user);
     }
+
+//    methode connexion de user
+    @PostMapping("/connecter")
+    private User connecter(@RequestParam("user") String username, @RequestParam("pass") String password){
+        return userService.connecter(username,password);
+    }
+
 }
