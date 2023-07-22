@@ -2,7 +2,9 @@ package com.api_quiz.api;
 
 import com.api_quiz.api.entites.NiveauEnum;
 import com.api_quiz.api.entites.Question;
-import com.api_quiz.api.services.IQuestionService;
+import com.api_quiz.api.entites.User;
+import com.api_quiz.api.repository.IUserRepository;
+import com.api_quiz.api.services.IUserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,19 +19,23 @@ public class ApiQuizApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ApiQuizApplication.class, args);
 	}
-	@Bean
-	CommandLineRunner start(IQuestionService iQuestionService){
-		return args -> {
-			Stream.of("Titre1", "Titre2", "Titre3")
-					.forEach(name->{
-						Question question = new Question();
-						question.setTitre(name);
-						question.setText("Quel est la capitale du Mali");
-						question.setNiveau(NiveauEnum.FACILE);
-						question.setTempsQuestion(new Date());
-						iQuestionService.creerQuestion(question);
-					});
-		};
-	}
+//	@Bean
+//	CommandLineRunner start(IUserService userService){
+//		return args -> {
+//			try {
+//				User user = new User();
+//				user.setIdUser(null);
+//				user.setNom("Sogore");
+//				user.setPrenom("Ibrahim");
+//				user.setEmail("sogore@gmail.com");
+//				user.setUsername("user");
+//				user.setPassword("12345678");
+//				userService.inscrire(user);
+//			}catch (Exception e){
+//				e.printStackTrace();
+//			}
+//
+//		};
+//	}
 
 }

@@ -13,8 +13,8 @@ import java.util.List;
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
 public class Question {
-    @Id
-    private String idQuestion;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idQuestion;
 
     @NotNull(message = "Remplissez les champs vides")
     @Size(max = 100, message = "Texte trop long")

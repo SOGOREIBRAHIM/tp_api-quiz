@@ -8,34 +8,36 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor    // lombok
-@Table(name = "Quiz")
+@Table(name = "QUIZ")
 public class Quiz {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idQuiz;
+    @Id
+    private String idQuiz;
 
-    @Column(name = "nom")
+    @Column(name = "NOM", length = 50, unique = true)
     @NotNull(message = "Remplissez les champs vides")
     @Size(max = 100, message = "Texte trop long")
     private String nom;
 
-    @Column(name = "type")
+    @Column(name = "TYPE")
     @NotNull(message = "Remplissez les champs vides")
     private TypeEnum type;
 
-    @Column(name = "dureeTotal")
+    @Temporal(TemporalType.TIME)
+    @Column(name = "DUREE_TOTAL")
     @NotNull(message = "Remplissez les champs vides")
-    private int dureeTotal;
+    private Date dureeTotal;
 
-    @Column(name = "domaine")
+    @Column(name = "DOMAINE")
     @NotNull(message = "Remplissez les champs vides")
     private DomaineEnum domaine;
 
-    @ManyToMany    // pour charger objet automatiquemnet
+    @ManyToMany(fetch = FetchType.EAGER)    // pour charger objet automatiquemnet
     private List<User> quizUsers = new ArrayList<>();   //pour associer un jeux a un user
 
     @ManyToOne
