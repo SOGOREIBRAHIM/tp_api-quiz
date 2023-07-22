@@ -26,6 +26,7 @@ public class Quiz {
 
     @Column(name = "TYPE")
     @NotNull(message = "Remplissez les champs vides")
+    @Enumerated(EnumType.STRING)
     private TypeEnum type;
 
     @Temporal(TemporalType.TIME)
@@ -35,6 +36,7 @@ public class Quiz {
 
     @Column(name = "DOMAINE")
     @NotNull(message = "Remplissez les champs vides")
+    @Enumerated(EnumType.STRING)
     private DomaineEnum domaine;
 
     @ManyToMany(fetch = FetchType.EAGER)    // pour charger objet automatiquemnet

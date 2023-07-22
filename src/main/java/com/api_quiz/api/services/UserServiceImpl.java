@@ -15,6 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class UserServiceImpl implements IUserService{
 
+//    Les injections
     private IUserRepository userRepository;
     private IQuizRepository quizRepository;
     private IQuestionRepository questionRepository;
@@ -22,7 +23,7 @@ public class UserServiceImpl implements IUserService{
     private IResultatRepository resultatRepository;
 
 
-
+//    methode inscrire
     @Override
     public User inscrire(User user) {
         user.setIdUser(UUID.randomUUID().toString());       // permet de generer String en fonction de heure system
@@ -35,6 +36,8 @@ public class UserServiceImpl implements IUserService{
      * @param username
      * @param password
      */
+
+//    methode connecter
     @Override
     public User connecter(String username, String password) {
         User user = userRepository.findByUsername(username);
@@ -48,9 +51,11 @@ public class UserServiceImpl implements IUserService{
      * @param quiz
      * @return
      */
+//    Creation de Quiz par un user
     @Override
     public Quiz creerQuiz(Quiz quiz) {
         quiz.setIdQuiz(UUID.randomUUID().toString());
+        if (quiz==null) throw  new RuntimeException("Champs vide");
         return quizRepository.save(quiz);
     }
 
