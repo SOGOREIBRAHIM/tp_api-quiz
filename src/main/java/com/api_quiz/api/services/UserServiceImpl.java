@@ -54,5 +54,13 @@ public class UserServiceImpl implements IUserService{
         userRepository.deleteById(username);
     }
 
+    /**
+     * @return
+     */
+    @Override
+    public List<User> userList() {
+        return userRepository.findAll();
+    }
+
 
 }

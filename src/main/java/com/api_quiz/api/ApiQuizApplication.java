@@ -2,6 +2,7 @@ package com.api_quiz.api;
 
 import com.api_quiz.api.entites.*;
 import com.api_quiz.api.repository.IUserRepository;
+import com.api_quiz.api.services.IQuizService;
 import com.api_quiz.api.services.IUserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,7 +19,7 @@ public class ApiQuizApplication {
 		SpringApplication.run(ApiQuizApplication.class, args);
 	}
 //	@Bean
-	CommandLineRunner start(IUserService userService){
+	CommandLineRunner start(IUserService userService, IQuizService quizService){
 		return args -> {
 			try {
 				User user = new User();
@@ -42,7 +43,7 @@ public class ApiQuizApplication {
 			quiz.setDureeTotal(new Date());
 			quiz.setDomaine(DomaineEnum.JAVA);
 			quiz.setCreerUser(new User("7b6fdee4-feb5-4bf5-966f-f08475fdbe60","Sogore","Ibrahim","sogorei@gmail.com","user","12345678",null,null,null,null,null));
-			userService.creerQuiz(quiz);
+			quizService.creerQuiz(quiz);
 
 			try {
 				User user1 = userService.connecter("user","12345678");

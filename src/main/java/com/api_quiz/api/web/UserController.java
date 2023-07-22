@@ -11,6 +11,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 public class UserController {
@@ -31,10 +33,22 @@ public class UserController {
         return userService.connecter(username,password);
     }
 
-//    methode creation de Quiz
-    @PostMapping("/ajouterQuiz")
-    private Quiz ajouter(@RequestBody Quiz quiz){
-        return userService.creerQuiz(quiz);
+//    methode pour modifier
+    @PostMapping("/modifier")
+    private User modifier(@RequestParam User user){
+        return userService.modifierQuiz(user);
     }
+
+    @PostMapping("/supprimer")
+    private void supprimer(@RequestParam String username){
+        userService.supprimer(username);
+    }
+
+    @GetMapping("/liste")
+    private List<User> userList(){
+        return userService.userList();
+    }
+
+
 
 }

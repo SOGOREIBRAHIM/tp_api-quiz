@@ -17,6 +17,8 @@ public interface IUserService {
 
     void supprimer(String username);      // supprimer User par username qui est unique
 
+    List<User> userList();      //  liste d'utilisateur
+
 
 
 
