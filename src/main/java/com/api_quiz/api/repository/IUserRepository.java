@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 
 public interface IUserRepository extends JpaRepository<User,String> {
 
-    User findByUsername(String username);      // cgercher un user par son username
+    User findByUsername(String username);      // chercher un user par son username
+    void deleteByUsername(String username);      // supprimer un user par son username
+
 }

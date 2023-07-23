@@ -34,20 +34,33 @@ public class UserController {
     }
 
 //    methode pour modifier
-    @PostMapping("/modifier")
-    private User modifier(@RequestParam User user){
-        return userService.modifierQuiz(user);
+    @PostMapping("/modifierUser")
+    private User modifier(@RequestBody User user){
+        if (user==null) throw new RuntimeException("Remplissez les champs vite");
+        return userService.modifierUser(user);
+
     }
 
-    @PostMapping("/supprimer")
-    private void supprimer(@RequestParam String username){
+//    methode supprimer user
+    @GetMapping("/supprimer")
+    private String supprimer(@RequestParam String username){
+        if (username==null) throw new RuntimeException("Choisissez un user");
         userService.supprimer(username);
+        return "User supprimer avec succes";
     }
 
-    @GetMapping("/liste")
+//    methode afficher list de tous users
+    @GetMapping("/listeUser")
     private List<User> userList(){
         return userService.userList();
     }
+
+//    methode afficher user par username
+    @GetMapping("/listeUserParNom")
+    private User userList(@RequestParam String usermane){
+        return userService.afficherUserParUsername(usermane);
+    }
+
 
 
 

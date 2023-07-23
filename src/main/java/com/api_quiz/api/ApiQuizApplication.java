@@ -31,6 +31,23 @@ public class ApiQuizApplication {
 				user.setPassword("12345678");
 				userService.inscrire(user);
 
+				User user2 = new User();
+				user2.setIdUser(null);
+				user2.setNom("Sogore1");
+				user2.setPrenom("Ibrahim1");
+				user2.setEmail("sogorei1@gmail.com");
+				user2.setUsername("user1");
+				user2.setPassword("12345678a");
+				userService.inscrire(user2);
+
+				Quiz quiz = new Quiz();
+				quiz.setIdQuiz(null);
+				quiz.setNom("Questionbbbb bio");
+				quiz.setType(TypeEnum.NOUVEAU);
+				quiz.setDureeTotal(new Date());
+				quiz.setDomaine(DomaineEnum.JAVA);
+				quiz.setCreerUser(new User("7b6fdee4-feb5-4bf5-966f-f08475fdbe60","Sogore","Ibrahim","sogorei@gmail.com","user","12345678",null,null,null,null,null));
+				quizService.creerQuiz(quiz);
 
 
 			}catch (Exception e){

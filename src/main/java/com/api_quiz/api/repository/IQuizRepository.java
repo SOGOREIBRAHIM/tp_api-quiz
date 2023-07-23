@@ -4,5 +4,11 @@ import com.api_quiz.api.entites.Quiz;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IQuizRepository extends JpaRepository<Quiz,String> {
-    Quiz findByNom(String nom);   // chercher un user par son username
+    Quiz findByNom(String nom);   // chercher quiz par son nom
+
+    String deleteAllByNom(String nom);  // supprimer quiz par son nom
+
+
+
+
 }

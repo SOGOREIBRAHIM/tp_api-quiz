@@ -10,5 +10,11 @@ public interface IQuizService {
 
     List<Quiz> afficherQuizAll();     // afficher un Quiz
 
+    Quiz afficherParNom(String nom);     // afficher un Quiz par nom
+
+    String supprimerQuizParNom(String nom);     // supprimer un quiz
+
+    Quiz modifierQuiz(Quiz quiz);   //modifier quiz
+
 
 }

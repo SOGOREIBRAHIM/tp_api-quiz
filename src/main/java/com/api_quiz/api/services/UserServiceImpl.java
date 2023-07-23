@@ -42,16 +42,19 @@ public class UserServiceImpl implements IUserService{
             throw new RuntimeException("Authentification echoue");
     }
 
-//    methode modifier user
+
+
+    //    methode modifier user
     @Override
-    public User modifierQuiz(User user) {
-       return userRepository.save(user);
+    public User modifierUser(User user) {
+        user.setIdUser(UUID.randomUUID().toString());
+        return userRepository.save(user);
     }
 
     // methode suppression user
     @Override
     public void supprimer(String username) {
-        userRepository.deleteById(username);
+        userRepository.deleteByUsername(username);
     }
 
     /**
@@ -60,6 +63,15 @@ public class UserServiceImpl implements IUserService{
     @Override
     public List<User> userList() {
         return userRepository.findAll();
+    }
+
+    /**
+     * @param username
+     * @return
+     */
+    @Override
+    public User afficherUserParUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 
 

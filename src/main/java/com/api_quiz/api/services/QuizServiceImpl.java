@@ -34,9 +34,31 @@ public class QuizServiceImpl implements IQuizService{
         return quizRepository.save(quiz);
     }
 
-    // User peut afficher Quiz
+    // afficher tous les Quiz
     @Override
     public List<Quiz> afficherQuizAll() {
         return quizRepository.findAll();
+    }
+
+//    afficher quiz par nom
+    @Override
+    public Quiz afficherParNom(String nom) {
+        return quizRepository.findByNom(nom);
+    }
+
+//   supprimer quiz par nom
+    @Override
+    public String supprimerQuizParNom(String nom) {
+        return quizRepository.deleteAllByNom(nom);
+    }
+
+
+    @Override
+    public Quiz modifierQuiz(Quiz quiz) {
+        quiz.setIdQuiz(UUID.randomUUID().toString());
+        quiz.setDomaine(DomaineEnum.JAVASCRIPT);
+        quiz.setDureeTotal(new Date());
+        quiz.setType(TypeEnum.EXISTANT);
+        return  quizRepository.save(quiz);
     }
 }

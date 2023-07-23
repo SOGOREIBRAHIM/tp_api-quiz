@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,16 +49,21 @@ public class User {
 //    @JoinTable(name = "USER_QUIZ")         // pas obligatoire mais recommander
     private List<Quiz> usersQuiz = new ArrayList<>() ;
 
-    @OneToMany(mappedBy = "creerUser",fetch = FetchType.LAZY)
+
+    @OneToMany(mappedBy = "creerUser",fetch = FetchType.LAZY,orphanRemoval = true)
+//    @Cascade({ org.hibernate.annotations.CascadeType.ALL, org.hibernate.annotations.CascadeType.DELETE_ORPHAN })
     private List<Quiz> creerQuiz;
 
-    @OneToMany(mappedBy = "userQuestion", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "userQuestion", fetch = FetchType.LAZY,orphanRemoval = true)
+//    @Cascade({ org.hibernate.annotations.CascadeType.ALL, org.hibernate.annotations.CascadeType.DELETE_ORPHAN })
     private List<Question> questionsUser;
 
-    @OneToMany(mappedBy = "usersReponse", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "usersReponse", fetch = FetchType.LAZY,orphanRemoval = true)
+//    @Cascade({ org.hibernate.annotations.CascadeType.ALL, org.hibernate.annotations.CascadeType.DELETE_ORPHAN })
     private List<Reponse> reponseUser;
 
-    @OneToMany(mappedBy = "usersResultat", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "usersResultat", fetch = FetchType.LAZY,orphanRemoval = true)
+//    @Cascade({ org.hibernate.annotations.CascadeType.ALL, org.hibernate.annotations.CascadeType.DELETE_ORPHAN })
     private List<Resultat> resultatUser;
 
 
