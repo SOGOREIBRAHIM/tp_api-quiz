@@ -63,6 +63,7 @@ public class User {
 
 
     @OneToMany(mappedBy = "usersResultat", fetch = FetchType.EAGER,orphanRemoval = true)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Resultat> resultatUser=new ArrayList<>();
 
 

@@ -1,8 +1,12 @@
 package com.api_quiz.api.services;
 
+import com.api_quiz.api.entites.Quiz;
+import com.api_quiz.api.entites.Resultat;
 import com.api_quiz.api.entites.User;
+import com.api_quiz.api.exception.UserNotFoundException;
 import com.api_quiz.api.repository.*;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +16,7 @@ import java.util.UUID;
 @Service
 //@Transactional
 @AllArgsConstructor
+@Slf4j
 public class UserServiceImpl implements IUserService{
 
 //    Les injections
@@ -22,8 +27,9 @@ public class UserServiceImpl implements IUserService{
     @Override
     public User inscrire(User user) {
         user.setIdUser(UUID.randomUUID().toString());       // permet de generer String en fonction de heure system
-        if (user==null) throw new RuntimeException("Remplissez les champs vides");
-            return userRepository.save(user);
+//        log.info(" User ajouter");
+        if (user==null) throw new UserNotFoundException("Remplissez les champs vides");
+        return userRepository.save(user);
          }
 
 //    methode connecter user

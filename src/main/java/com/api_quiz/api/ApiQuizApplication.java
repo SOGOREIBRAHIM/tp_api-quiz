@@ -48,7 +48,7 @@ public class ApiQuizApplication {
 				quiz.setType(EnumType.NOUVEAU);
 				quiz.setDureeTotal(new Date());
 				quiz.setDomaine(EnumDomaine.JAVASCRIPT);
-				quiz.setCreerUser(new User("26365606-9b69-454f-a242-ffeb1a5f3c5e","Sogore","Ibrahim","sogorei@gmail.com","user","12345678",null,null,null,null,null));
+				quiz.setCreerUser(new User("00c9f604-d68f-4438-b90b-7e745772ff87","Sogore","Ibrahim","sogorei@gmail.com","user","12345678",null,null,null,null,null));
 				quizService.creerQuiz(quiz);
 
 				Quiz quiz2 = new Quiz();
@@ -57,7 +57,7 @@ public class ApiQuizApplication {
 				quiz2.setType(EnumType.NOUVEAU);
 				quiz2.setDureeTotal(new Date());
 				quiz2.setDomaine(EnumDomaine.JAVA);
-				quiz2.setCreerUser(new User("26365606-9b69-454f-a242-ffeb1a5f3c5e","Sogore","Ibrahim","sogorei@gmail.com","user","12345678",null,null,null,null,null));
+				quiz2.setCreerUser(new User("00c9f604-d68f-4438-b90b-7e745772ff87","Sogore","Ibrahim","sogorei@gmail.com","user","12345678",null,null,null,null,null));
 				quizService.creerQuiz(quiz2);
 
 

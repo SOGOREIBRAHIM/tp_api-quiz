@@ -27,7 +27,7 @@ public class Resultat {
     private int rang;
 
     @OneToOne
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private User usersResultat;
 
     @ManyToOne

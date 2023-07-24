@@ -31,8 +31,6 @@ public class QuizServiceImpl implements IQuizService{
         quiz.setDomaine(EnumDomaine.JAVA);
         quiz.setDureeTotal(new Date());
         quiz.setType(EnumType.NOUVEAU);
-        quiz.getCreerUser();
-        quiz.getQuizUsers();
         return quizRepository.save(quiz);
     }
 

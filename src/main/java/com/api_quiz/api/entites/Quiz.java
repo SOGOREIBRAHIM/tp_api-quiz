@@ -50,6 +50,7 @@ public class Quiz {
     private User creerUser;
 
     @OneToMany(mappedBy = "quizResultat",fetch = FetchType.EAGER)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Resultat> resultatQuiz=new ArrayList<>();
 
 
