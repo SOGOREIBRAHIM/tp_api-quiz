@@ -1,6 +1,6 @@
 package com.api_quiz.api.entites;
 
-public enum DomaineEnum {
+public enum EnumDomaine {
     JAVA,
     PYTHON,
     PHP,

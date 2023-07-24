@@ -32,8 +32,8 @@ public class Reponse {
     @ManyToOne
     private User usersReponse;
 
-    @OneToOne
-    private Resultat resultatReponse;
+//    @OneToOne
+//    private Resultat resultatReponse;
 
     @ManyToOne
     private Question questionReponse;

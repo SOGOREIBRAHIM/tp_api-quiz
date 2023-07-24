@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@Transactional
+//@Transactional
 @AllArgsConstructor
 public class QuestionServiceImpl {
 

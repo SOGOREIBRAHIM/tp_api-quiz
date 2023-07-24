@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,6 +62,12 @@ public class UserController {
         return userService.afficherUserParUsername(usermane);
     }
 
+    //    methode afficher user par id
+    @GetMapping("/listeAllUser")
+    private ResponseEntity<User> userAllList(@RequestParam String id){
+        User user = userService.getById(id);
+        return ResponseEntity.ok(user);
+    }
 
 
 

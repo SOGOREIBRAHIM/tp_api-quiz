@@ -1,21 +1,16 @@
 package com.api_quiz.api.services;
 
-import com.api_quiz.api.entites.DomaineEnum;
-import com.api_quiz.api.entites.Quiz;
-import com.api_quiz.api.entites.TypeEnum;
 import com.api_quiz.api.entites.User;
 import com.api_quiz.api.repository.*;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 @Service
-@Transactional
+//@Transactional
 @AllArgsConstructor
 public class UserServiceImpl implements IUserService{
 
@@ -72,6 +67,15 @@ public class UserServiceImpl implements IUserService{
     @Override
     public User afficherUserParUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    /**
+     * @param id
+     * @return
+     */
+    @Override
+    public User getById(String id) {
+        return userRepository.findById(id).get();
     }
 
 

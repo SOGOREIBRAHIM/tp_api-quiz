@@ -1,5 +1,7 @@
 package com.api_quiz.api.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -46,25 +48,22 @@ public class User {
     private String password;
 
     @ManyToMany(mappedBy = "quizUsers",fetch = FetchType.EAGER)
-//    @JoinTable(name = "USER_QUIZ")         // pas obligatoire mais recommander
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Quiz> usersQuiz = new ArrayList<>() ;
 
+    @OneToMany(mappedBy = "creerUser",fetch = FetchType.EAGER,orphanRemoval = true)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<Quiz> creerQuiz=new ArrayList<>();
 
-    @OneToMany(mappedBy = "creerUser",fetch = FetchType.LAZY,orphanRemoval = true)
-//    @Cascade({ org.hibernate.annotations.CascadeType.ALL, org.hibernate.annotations.CascadeType.DELETE_ORPHAN })
-    private List<Quiz> creerQuiz;
+    @OneToMany(mappedBy = "userQuestion", fetch = FetchType.EAGER,orphanRemoval = true)
+    private List<Question> questionsUser=new ArrayList<>();
 
-    @OneToMany(mappedBy = "userQuestion", fetch = FetchType.LAZY,orphanRemoval = true)
-//    @Cascade({ org.hibernate.annotations.CascadeType.ALL, org.hibernate.annotations.CascadeType.DELETE_ORPHAN })
-    private List<Question> questionsUser;
+    @OneToMany(mappedBy = "usersReponse", fetch = FetchType.EAGER,orphanRemoval = true)
+    private List<Reponse> reponseUser=new ArrayList<>();
 
-    @OneToMany(mappedBy = "usersReponse", fetch = FetchType.LAZY,orphanRemoval = true)
-//    @Cascade({ org.hibernate.annotations.CascadeType.ALL, org.hibernate.annotations.CascadeType.DELETE_ORPHAN })
-    private List<Reponse> reponseUser;
 
-    @OneToMany(mappedBy = "usersResultat", fetch = FetchType.LAZY,orphanRemoval = true)
-//    @Cascade({ org.hibernate.annotations.CascadeType.ALL, org.hibernate.annotations.CascadeType.DELETE_ORPHAN })
-    private List<Resultat> resultatUser;
+    @OneToMany(mappedBy = "usersResultat", fetch = FetchType.EAGER,orphanRemoval = true)
+    private List<Resultat> resultatUser=new ArrayList<>();
 
 
 }

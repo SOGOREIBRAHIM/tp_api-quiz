@@ -1,6 +1,7 @@
 package com.api_quiz.api.entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -27,8 +28,8 @@ public class Quiz {
 
     @Column(name = "TYPE")
     @NotNull(message = "Remplissez les champs vides")
-    @Enumerated(EnumType.STRING)
-    private TypeEnum type;
+    @Enumerated(jakarta.persistence.EnumType.STRING)
+    private EnumType type;
 
     @Temporal(TemporalType.TIME)
     @Column(name = "DUREE_TOTAL")
@@ -37,21 +38,25 @@ public class Quiz {
 
     @Column(name = "DOMAINE")
     @NotNull(message = "Remplissez les champs vides")
-    @Enumerated(EnumType.STRING)
-    private DomaineEnum domaine;
+    @Enumerated(jakarta.persistence.EnumType.STRING)
+    private EnumDomaine domaine;
 
     @ManyToMany(fetch = FetchType.EAGER)    // pour charger objet automatiquemnet
-    private List<User> quizUsers = new ArrayList<>();   //pour associer un jeux a un user
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<User> quizUsers = new ArrayList<>(); //= new ArrayList<>();   //pour associer un jeux a un user
 
     @ManyToOne
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private User creerUser;
 
-    @OneToMany(mappedBy = "quizResultat",fetch = FetchType.LAZY)
-    private List<Resultat> resultatQuiz;
+    @OneToMany(mappedBy = "quizResultat",fetch = FetchType.EAGER)
+    private List<Resultat> resultatQuiz=new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "quizQuestion", fetch = FetchType.LAZY)
-    private List<Question> questionsQuiz;
+    @OneToMany(mappedBy = "quizQuestion", fetch = FetchType.EAGER)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<Question> questionsQuiz=new ArrayList<>();
+
+
 
 }

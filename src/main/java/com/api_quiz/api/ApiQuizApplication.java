@@ -1,7 +1,6 @@
 package com.api_quiz.api;
 
 import com.api_quiz.api.entites.*;
-import com.api_quiz.api.repository.IUserRepository;
 import com.api_quiz.api.services.IQuizService;
 import com.api_quiz.api.services.IUserService;
 import org.springframework.boot.CommandLineRunner;
@@ -10,7 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Date;
-import java.util.stream.Stream;
 
 @SpringBootApplication
 public class ApiQuizApplication {
@@ -40,32 +38,30 @@ public class ApiQuizApplication {
 				user2.setPassword("12345678a");
 				userService.inscrire(user2);
 
-				Quiz quiz = new Quiz();
-				quiz.setIdQuiz(null);
-				quiz.setNom("Questionbbbb bio");
-				quiz.setType(TypeEnum.NOUVEAU);
-				quiz.setDureeTotal(new Date());
-				quiz.setDomaine(DomaineEnum.JAVA);
-				quiz.setCreerUser(new User("7b6fdee4-feb5-4bf5-966f-f08475fdbe60","Sogore","Ibrahim","sogorei@gmail.com","user","12345678",null,null,null,null,null));
-				quizService.creerQuiz(quiz);
-
-
-			}catch (Exception e){
-				e.printStackTrace();
-			}
-			Quiz quiz = new Quiz();
-			quiz.setIdQuiz(null);
-			quiz.setNom("Questionbbbb anglais");
-			quiz.setType(TypeEnum.NOUVEAU);
-			quiz.setDureeTotal(new Date());
-			quiz.setDomaine(DomaineEnum.JAVA);
-			quiz.setCreerUser(new User("7b6fdee4-feb5-4bf5-966f-f08475fdbe60","Sogore","Ibrahim","sogorei@gmail.com","user","12345678",null,null,null,null,null));
-			quizService.creerQuiz(quiz);
-
-			try {
 				User user1 = userService.connecter("user","12345678");
 				System.out.println(user1.getIdUser());
 				System.out.println(user1.getUsername());
+
+				Quiz quiz = new Quiz();
+				quiz.setIdQuiz(null);
+				quiz.setNom("question bio");
+				quiz.setType(EnumType.NOUVEAU);
+				quiz.setDureeTotal(new Date());
+				quiz.setDomaine(EnumDomaine.JAVASCRIPT);
+				quiz.setCreerUser(new User("26365606-9b69-454f-a242-ffeb1a5f3c5e","Sogore","Ibrahim","sogorei@gmail.com","user","12345678",null,null,null,null,null));
+				quizService.creerQuiz(quiz);
+
+				Quiz quiz2 = new Quiz();
+				quiz2.setIdQuiz(null);
+				quiz2.setNom("Question anglais");
+				quiz2.setType(EnumType.NOUVEAU);
+				quiz2.setDureeTotal(new Date());
+				quiz2.setDomaine(EnumDomaine.JAVA);
+				quiz2.setCreerUser(new User("26365606-9b69-454f-a242-ffeb1a5f3c5e","Sogore","Ibrahim","sogorei@gmail.com","user","12345678",null,null,null,null,null));
+				quizService.creerQuiz(quiz2);
+
+
+
 			}catch (Exception e){
 				e.printStackTrace();
 			}

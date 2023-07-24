@@ -20,9 +20,9 @@ public interface IUserService {
 
     List<User> userList();      //  liste d'utilisateur
 
-    User afficherUserParUsername(String username);
+    User afficherUserParUsername(String username); //liste user par username
 
-
+    User getById(String id);    //liste user par id
 
 
 

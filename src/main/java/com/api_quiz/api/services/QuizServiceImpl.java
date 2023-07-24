@@ -1,19 +1,19 @@
 package com.api_quiz.api.services;
 
-import com.api_quiz.api.entites.DomaineEnum;
+import com.api_quiz.api.entites.EnumDomaine;
 import com.api_quiz.api.entites.Quiz;
-import com.api_quiz.api.entites.TypeEnum;
+import com.api_quiz.api.entites.EnumType;
 import com.api_quiz.api.repository.IQuizRepository;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 @Service
-@Transactional
+//@Transactional
 @AllArgsConstructor
 public class QuizServiceImpl implements IQuizService{
 //    injection
@@ -28,9 +28,11 @@ public class QuizServiceImpl implements IQuizService{
     public Quiz creerQuiz( Quiz quiz) {
         quiz.setIdQuiz(UUID.randomUUID().toString());
         if (quiz==null) throw  new RuntimeException("Champs vide");
-        quiz.setDomaine(DomaineEnum.JAVA);
+        quiz.setDomaine(EnumDomaine.JAVA);
         quiz.setDureeTotal(new Date());
-        quiz.setType(TypeEnum.NOUVEAU);
+        quiz.setType(EnumType.NOUVEAU);
+        quiz.getCreerUser();
+        quiz.getQuizUsers();
         return quizRepository.save(quiz);
     }
 
@@ -56,9 +58,9 @@ public class QuizServiceImpl implements IQuizService{
     @Override
     public Quiz modifierQuiz(Quiz quiz) {
         quiz.setIdQuiz(UUID.randomUUID().toString());
-        quiz.setDomaine(DomaineEnum.JAVASCRIPT);
+        quiz.setDomaine(EnumDomaine.JAVASCRIPT);
         quiz.setDureeTotal(new Date());
-        quiz.setType(TypeEnum.EXISTANT);
+        quiz.setType(EnumType.EXISTANT);
         return  quizRepository.save(quiz);
     }
 }

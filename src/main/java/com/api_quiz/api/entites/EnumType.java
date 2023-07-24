@@ -1,6 +1,6 @@
 package com.api_quiz.api.entites;
 
-public enum TypeEnum {
+public enum EnumType {
     NOUVEAU,
     EXISTANT
 }

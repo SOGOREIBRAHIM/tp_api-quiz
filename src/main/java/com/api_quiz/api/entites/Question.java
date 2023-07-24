@@ -1,12 +1,16 @@
 package com.api_quiz.api.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.persistence.EnumType;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +30,7 @@ public class Question {
 
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Remplissez les champs vides")
-    private NiveauEnum niveau;
+    private EnumNiveau niveau;
 
     @Temporal(TemporalType.TIME)
     private Date tempsQuestion;
@@ -34,8 +38,9 @@ public class Question {
     @ManyToOne
     private User userQuestion;
 
-    @OneToMany(mappedBy = "questionReponse", fetch = FetchType.LAZY)
-    private List<Reponse> reponseReponse;
+    @OneToMany(mappedBy = "questionReponse", fetch = FetchType.EAGER)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<Reponse> reponseReponse=new ArrayList<>();
 
     @ManyToOne
     private Quiz quizQuestion;

@@ -1,6 +1,7 @@
 package com.api_quiz.api.services;
 
 import com.api_quiz.api.entites.Quiz;
+import com.api_quiz.api.entites.User;
 
 import java.util.List;
 
@@ -15,6 +16,8 @@ public interface IQuizService {
     String supprimerQuizParNom(String nom);     // supprimer un quiz
 
     Quiz modifierQuiz(Quiz quiz);   //modifier quiz
+
+
 
 
 }

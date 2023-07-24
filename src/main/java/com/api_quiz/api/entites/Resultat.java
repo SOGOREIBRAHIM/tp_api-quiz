@@ -1,5 +1,7 @@
 package com.api_quiz.api.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
@@ -25,13 +27,15 @@ public class Resultat {
     private int rang;
 
     @OneToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private User usersResultat;
 
     @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Quiz quizResultat;
 
-    @ManyToOne
-    private Reponse reponsesResultat;
+//    @ManyToOne
+//    private Reponse reponsesResultat;
 
 
 
