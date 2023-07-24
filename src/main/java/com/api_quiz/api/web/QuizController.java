@@ -15,7 +15,7 @@ public class QuizController {
 
     private IQuizService quizService;
 
-    //    methode creation de Quiz
+    //    methode création de Quiz
     @PostMapping("/ajouterQuiz")
     private Quiz ajouter(@RequestBody Quiz quiz){
         return quizService.creerQuiz(quiz);

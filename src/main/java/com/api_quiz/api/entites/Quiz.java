@@ -57,6 +57,4 @@ public class Quiz {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Question> questionsQuiz=new ArrayList<>();
 
-
-
 }

@@ -55,6 +55,7 @@ public class User {
 //    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Quiz> creerQuiz=new ArrayList<>();
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "userQuestion", fetch = FetchType.EAGER,orphanRemoval = true)
     private List<Question> questionsUser=new ArrayList<>();
 

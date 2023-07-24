@@ -16,50 +16,48 @@ public class ApiQuizApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ApiQuizApplication.class, args);
 	}
-//	@Bean
+	//@Bean
 	CommandLineRunner start(IUserService userService, IQuizService quizService){
 		return args -> {
 			try {
 				User user = new User();
 				user.setIdUser(null);
-				user.setNom("Sogore");
-				user.setPrenom("Ibrahim");
-				user.setEmail("sogorei@gmail.com");
-				user.setUsername("user");
+				user.setNom("Guindo");
+				user.setPrenom("Ibrahima");
+				user.setEmail("ib@gmail.com");
+				user.setUsername("ib223");
 				user.setPassword("12345678");
 				userService.inscrire(user);
 
 				User user2 = new User();
 				user2.setIdUser(null);
-				user2.setNom("Sogore1");
-				user2.setPrenom("Ibrahim1");
-				user2.setEmail("sogorei1@gmail.com");
-				user2.setUsername("user1");
+				user2.setNom("Togo");
+				user2.setPrenom("Drissa");
+				user2.setEmail("dt@gmail.com");
+				user2.setUsername("d_togo");
 				user2.setPassword("12345678a");
 				userService.inscrire(user2);
-
-				User user1 = userService.connecter("user","12345678");
+				/*User user1 = userService.connecter("user","12345678");
 				System.out.println(user1.getIdUser());
-				System.out.println(user1.getUsername());
+				System.out.println(user1.getUsername());*/
 
-				Quiz quiz = new Quiz();
+				/*Quiz quiz = new Quiz();
 				quiz.setIdQuiz(null);
-				quiz.setNom("question bio");
+				quiz.setNom("Question Java");
 				quiz.setType(EnumType.NOUVEAU);
 				quiz.setDureeTotal(new Date());
 				quiz.setDomaine(EnumDomaine.JAVASCRIPT);
-				quiz.setCreerUser(new User("26365606-9b69-454f-a242-ffeb1a5f3c5e","Sogore","Ibrahim","sogorei@gmail.com","user","12345678",null,null,null,null,null));
+				quiz.setCreerUser(new User("7893c1ee-c4f1-4ebb-a210-8624833a6692","Guindo","Ibrahima","ib@gmail.com","ib223","12345678",null,null,null,null,null));
 				quizService.creerQuiz(quiz);
 
 				Quiz quiz2 = new Quiz();
 				quiz2.setIdQuiz(null);
-				quiz2.setNom("Question anglais");
+				quiz2.setNom("Question Python");
 				quiz2.setType(EnumType.NOUVEAU);
 				quiz2.setDureeTotal(new Date());
 				quiz2.setDomaine(EnumDomaine.JAVA);
-				quiz2.setCreerUser(new User("26365606-9b69-454f-a242-ffeb1a5f3c5e","Sogore","Ibrahim","sogorei@gmail.com","user","12345678",null,null,null,null,null));
-				quizService.creerQuiz(quiz2);
-
+				quiz2.setCreerUser(new User("c59e677b-648a-42df-94de-cab78887d7aa","Togo","Drissa","dt@gmail.com","d_togo","12345678",null,null,null,null,null));
+				quizService.creerQuiz(quiz2);*/
 
 
 			}catch (Exception e){
